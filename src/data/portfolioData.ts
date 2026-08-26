@@ -2,20 +2,23 @@ export interface Project {
   id: string;
   title: string;
   category: 'web' | 'mobile' | 'fintech' | 'security';
+  subtitle: string;
   description: string;
-  longDescription?: string;
+  longDescription: string;
   url: string;
   role: string;
   technologies: string[];
-  metrics?: string;
+  metrics: string;
   featured: boolean;
-  imageBg: string;
+  accentGradient: string;
+  tag: string;
 }
 
-export interface SkillCategory {
-  title: string;
+export interface SkillGroup {
+  category: string;
+  subtitle: string;
   iconName: string;
-  skills: { name: string; level: number; highlight?: boolean }[];
+  items: { name: string; tag: string; description: string }[];
 }
 
 export interface ExperienceItem {
@@ -23,37 +26,35 @@ export interface ExperienceItem {
   role: string;
   period: string;
   location: string;
-  description: string;
-  achievements: string[];
-  technologies: string[];
+  summary: string;
+  bullets: string[];
+  stack: string[];
 }
 
 export interface Certification {
   title: string;
   issuer: string;
   date: string;
-  icon: string;
-  credentialId?: string;
+  code: string;
 }
 
 export const PORTFOLIO_DATA = {
   personalInfo: {
     fullName: "Akor Anthony Makuochukwu",
-    brandName: "Snowtech",
-    displayName: "Akor Anthony Makuochukwu (Snowtech)",
-    title: "Senior Full-Stack & Mobile App Developer | Cybersecurity Specialist",
-    yearsExperience: 6,
+    alias: "Snowtech",
+    headline: "Senior Full-Stack & App Developer | CTO | Cybersecurity Specialist",
+    experienceYears: "6+",
     phone: "09045382250",
     phoneFormatted: "+234 904 538 2250",
-    whatsappUrl: "https://wa.me/2349045382250?text=Hi%20Anthony,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!",
-    email: "contact@snowtech.dev",
-    location: "Sangotedo, Lagos Island, Lagos State, Nigeria",
-    bio: "Passionate Senior Developer with 6+ years of experience engineering high-performance web platforms, cross-platform mobile applications, and enterprise fintech ecosystems. Combining deep full-stack engineering with certified cybersecurity defense and CTO-level technical leadership.",
+    whatsappUrl: "https://wa.me/2349045382250?text=Hello%20Anthony,%20I'm%20reaching%20out%20from%20your%20portfolio%20website.",
+    email: "anthony@snowtech.dev",
+    location: "Sangotedo, Lagos Island, Lagos, Nigeria",
+    bioShort: "CTO at TallyPadi & former Smartweb Security engineer. 6+ years building reactive mobile apps, enterprise web portals, and hardened cyber architectures.",
     stats: [
-      { label: "Years Experience", value: "6+" },
-      { label: "Live Client Apps & Platforms", value: "25+" },
-      { label: "Security Audits Completed", value: "30+" },
-      { label: "Uptime & Scalability", value: "99.9%" },
+      { number: "06+", label: "Years Engineering Experience" },
+      { number: "25+", label: "Deploys & Live Products" },
+      { number: "10K+", label: "Active Businesses Served" },
+      { number: "99.9%", label: "Uptime & Security Integrity" }
     ]
   },
 
@@ -61,69 +62,108 @@ export const PORTFOLIO_DATA = {
     {
       id: "tallypadi",
       title: "TallyPadi",
+      subtitle: "FinTech & Automated Business Accounting Engine",
       category: "fintech",
-      description: "Comprehensive financial management & ledger application empowering businesses with automated bookkeeping, inventory tracking, and payment processing.",
-      longDescription: "Architected and engineered TallyPadi from the ground up as CTO. Features multi-tenant accounting modules, real-time transaction synchronization, secure payment gateway integrations, and data encryption.",
+      description: "Engineered and architected TallyPadi as CTO — a business management platform empowering over 10,000 active enterprises with automated bookkeeping, digital inventory, and instant payment settlement.",
+      longDescription: "Led the core engineering roadmap from zero to scale. Designed multi-tenant microservices, real-time ledger sync, bank-grade encryption, and cross-platform mobile apps for iOS and Android.",
       url: "https://tallypadi.com/",
-      role: "CTO & Lead Architect",
-      technologies: ["Next.js", "TypeScript", "Node.js", "React Native", "PostgreSQL", "Tailwind CSS", "PCI-DSS Security"],
-      metrics: "Serving 10k+ Active Businesses",
+      role: "CTO & Chief Architect",
+      technologies: ["Next.js App Router", "React Native", "Node.js", "PostgreSQL", "Tailwind CSS", "PCI-DSS Security"],
+      metrics: "10,000+ Active Businesses",
       featured: true,
-      imageBg: "from-emerald-900/60 via-slate-900 to-cyan-950/80"
+      accentGradient: "from-emerald-500/20 via-slate-900 to-cyan-500/10",
+      tag: "CTO Spotlight"
     },
     {
       id: "rmg-emporium",
       title: "RMG Emporium",
+      subtitle: "Next-Gen E-Commerce & Retail Platform",
       category: "web",
-      description: "Modern, high-converting e-commerce web platform engineered for seamless product discovery, fast checkout flow, and inventory management.",
-      longDescription: "Built a fully responsive luxury retail web store with server-side rendering, sub-second page loads, automated order tracking, and integrated secure payment gateways.",
+      description: "Built a high-converting, sub-second luxury web platform engineered for smooth catalog browsing, real-time checkout synchronization, and payment gateway security.",
+      longDescription: "Implemented server-side rendering with Next.js, custom checkout workflows, automated inventory webhooks, and zero-latency page transitions.",
       url: "https://www.rmg-emporium.com/",
-      role: "Lead Full-Stack Web Developer",
-      technologies: ["Next.js", "React", "Node.js", "Tailwind CSS", "Paystack/Stripe", "REST APIs"],
-      metrics: "99.8% Faster Page Load",
+      role: "Lead Full-Stack Developer",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Paystack", "Stripe API", "Vercel Edge"],
+      metrics: "Sub-second Page Load",
       featured: true,
-      imageBg: "from-purple-900/60 via-slate-900 to-slate-950"
+      accentGradient: "from-cyan-500/20 via-slate-900 to-purple-500/10",
+      tag: "Live E-Commerce"
     },
     {
       id: "wilson-elite",
       title: "Wilson Elite",
+      subtitle: "Enterprise Corporate Identity & Portal",
       category: "web",
-      description: "High-tier corporate identity and enterprise solutions hub tailored for premium digital services, enterprise consulting, and client engagement.",
-      longDescription: "Designed and developed an elegant brand portal showcasing technical solutions, client portfolios, interactive request portals, and optimized security architecture.",
+      description: "Designed and built an enterprise brand platform for elite business consulting, digital asset management, and client engagement.",
+      longDescription: "Custom reactive web layout with glassmorphism UI, interactive service request modules, and optimized web performance architecture.",
       url: "https://wilson-elite.com/",
-      role: "Principal Architect & Lead Developer",
-      technologies: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS", "Vercel Enterprise"],
-      metrics: "Custom Enterprise Portal",
+      role: "Founder & Lead Developer",
+      technologies: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS", "Vercel"],
+      metrics: "99+ Lighthouse Performance",
       featured: true,
-      imageBg: "from-blue-900/60 via-slate-900 to-indigo-950"
+      accentGradient: "from-indigo-500/20 via-slate-900 to-emerald-500/10",
+      tag: "Corporate Platform"
     },
     {
       id: "smartweb-security-suite",
-      title: "Smartweb Security Portal & Audit Suite",
+      title: "Smartweb Security & Audit Suite",
+      subtitle: "Cyber Threat Detection & Hardening Portal",
       category: "security",
-      description: "Cybersecurity vulnerability scanner, real-time threat detection interface, and automated web server security hardening system.",
-      longDescription: "Developed penetration testing reporting tools and automated compliance monitoring software during technical tenure at Smartweb Security.",
+      description: "Developed web application security auditing tools, penetration test reporting dashboards, and threat monitoring suites during technical tenure at Smartweb Security.",
+      longDescription: "Engineered automated scanners for OWASP Top 10 vulnerabilities, server SSL/TLS compliance checkers, and secure client communication channels.",
       url: "#",
-      role: "Cybersecurity Specialist & Developer",
-      technologies: ["Python", "Node.js", "OWASP ZAP", "Linux Hardening", "Docker", "Tailwind CSS"],
-      metrics: "Zero Critical Vulnerabilities",
+      role: "Cybersecurity Specialist",
+      technologies: ["Python", "Node.js", "OWASP Audits", "Linux Hardening", "Docker", "Security Headers"],
+      metrics: "Zero Vulnerability Compliance",
       featured: true,
-      imageBg: "from-emerald-950 via-slate-900 to-green-950"
-    },
-    {
-      id: "mobile-wallet-app",
-      title: "Cross-Platform Mobile FinTech App",
-      category: "mobile",
-      description: "Secure iOS & Android mobile banking companion with biometric authentication, instant fund transfers, and push transaction alerts.",
-      longDescription: "Built with React Native and custom native modules, featuring end-to-end payload encryption and biometrics.",
-      url: "#",
-      role: "Lead Mobile App Developer",
-      technologies: ["React Native", "TypeScript", "Redux Toolkit", "Biometric Auth", "Node.js API"],
-      metrics: "4.8★ App Store Rating",
-      featured: false,
-      imageBg: "from-cyan-950 via-slate-900 to-blue-950"
+      accentGradient: "from-emerald-600/20 via-slate-900 to-slate-950",
+      tag: "Security Suite"
     }
   ] as Project[],
+
+  skillGroups: [
+    {
+      category: "Frontend & Web Architecture",
+      subtitle: "High-throughput SSR, reactive UIs, and state management",
+      iconName: "Layout",
+      items: [
+        { name: "Next.js 14 / App Router", tag: "Expert", description: "Server components, streaming, static generation & route handlers." },
+        { name: "React.js & TypeScript", tag: "Core", description: "Strict type safety, custom hooks, and state orchestration." },
+        { name: "Tailwind CSS & Animations", tag: "Design Systems", description: "Bespoke glassmorphism, responsive grid math, and Framer Motion." },
+        { name: "Performance Tuning", tag: "Optimized", description: "Core Web Vitals, sub-second LCP, and image optimizations." }
+      ]
+    },
+    {
+      category: "Cross-Platform Mobile Development",
+      subtitle: "Native performance iOS & Android mobile applications",
+      iconName: "Smartphone",
+      items: [
+        { name: "React Native (iOS & Android)", tag: "Mobile Core", description: "Single codebase apps with 60fps native animations." },
+        { name: "Biometric & Secure Auth", tag: "Security", description: "FaceID, Fingerprint auth, and encrypted keytar storage." },
+        { name: "App Store & Play Store Deploys", tag: "DevOps", description: "TestFlight, Play Console release pipelines, and OTA updates." }
+      ]
+    },
+    {
+      category: "Backend Microservices & Cloud",
+      subtitle: "Scalable REST APIs, relational databases, and serverless compute",
+      iconName: "Server",
+      items: [
+        { name: "Node.js / Express / Python", tag: "Backend", description: "Event-driven REST APIs, WebSockets, and background workers." },
+        { name: "PostgreSQL / MongoDB", tag: "Database", description: "Complex SQL indexing, ACID transactions, and document stores." },
+        { name: "Vercel / Docker / Cloud", tag: "Infrastructure", description: "CI/CD pipelines, containerization, and environment management." }
+      ]
+    },
+    {
+      category: "Cybersecurity & System Defense",
+      subtitle: "OWASP protection, server hardening, and security audits",
+      iconName: "ShieldCheck",
+      items: [
+        { name: "Web App Penetration Audits", tag: "Certified", description: "OWASP Top 10 mitigation, SQLi, XSS, and CSRF defense." },
+        { name: "SSL/TLS & Server Hardening", tag: "Security", description: "Nginx hardening, strict HSTS, content security policies (CSP)." },
+        { name: "FinTech PCI-DSS Security", tag: "Compliance", description: "Encrypted payload handling and bank integration security." }
+      ]
+    }
+  ] as SkillGroup[],
 
   experiences: [
     {
@@ -131,107 +171,59 @@ export const PORTFOLIO_DATA = {
       role: "Chief Technology Officer (CTO)",
       period: "2023 - Present",
       location: "Lagos, Nigeria",
-      description: "Steering technological strategy, product architecture, infrastructure scalability, and security posture for TallyPadi's business ledger and financial platforms.",
-      achievements: [
-        "Architected scalable cloud microservices handling thousands of daily financial transactions.",
-        "Implemented end-to-end bank-grade security encryption and compliance protocols.",
-        "Led cross-functional web and mobile engineering teams delivering 99.9% uptime."
+      summary: "Directing technology vision, cloud infrastructure, cross-platform engineering, and product security for TallyPadi's business ledger ecosystem.",
+      bullets: [
+        "Architected scalable backend microservices serving over 10,000 active business users.",
+        "Implemented bank-grade encryption protocols and secure payment gateway integrations.",
+        "Led mobile & web development teams achieving 99.9% platform availability."
       ],
-      technologies: ["Next.js", "React Native", "Node.js", "PostgreSQL", "Cloud Architecture", "Cybersecurity"]
+      stack: ["Next.js", "React Native", "Node.js", "PostgreSQL", "Cybersecurity", "Cloud Architecture"]
     },
     {
       company: "Smartweb Security",
-      role: "Cybersecurity Engineer & Full-Stack Developer",
+      role: "Cybersecurity Engineer & Developer",
       period: "2021 - 2023",
       location: "Lagos, Nigeria",
-      description: "Conducted security audits, vulnerability assessments, penetration testing, and built secure web and mobile applications for enterprise clients.",
-      achievements: [
-        "Remediated high-risk OWASP Top 10 vulnerabilities across client web applications.",
-        "Built automated security monitoring dashboards and incident reporting portals.",
-        "Trained software engineers on secure coding guidelines and SSL/TLS hardening."
+      summary: "Executed web application penetration testing, vulnerability assessments, and secure code audits for enterprise web platforms.",
+      bullets: [
+        "Identified and patched critical security flaws across high-traffic web applications.",
+        "Engineered automated vulnerability reporting dashboards for clients.",
+        "Configured server hardening, SSL pinning, and security header policies."
       ],
-      technologies: ["Web Application Security", "OWASP", "Python", "Linux Security", "Network Hardening", "JavaScript"]
+      stack: ["Web Application Security", "OWASP", "Python", "Linux Hardening", "Network Auditing"]
     },
     {
-      company: "Snowtech Consulting",
-      role: "Lead Full-Stack & Mobile Developer",
+      company: "Snowtech Engineering",
+      role: "Lead Software & App Consultant",
       period: "2018 - Present",
       location: "Sangotedo, Lagos Island, Nigeria",
-      description: "Delivering custom Web & Mobile App solutions for startups, retail brands, and corporate platforms across Nigeria and internationally.",
-      achievements: [
-        "Successfully deployed 25+ web and mobile applications including wilson-elite.com and rmg-emporium.com.",
-        "Optimized frontend performance, achieving >95 Lighthouse speed scores on desktop and mobile."
+      summary: "Delivering bespoke mobile apps, web solutions, and technical advisory for startups and retail enterprises across Nigeria & globally.",
+      bullets: [
+        "Delivered over 25+ successful web and mobile products including wilson-elite.com and rmg-emporium.com.",
+        "Achieved 95+ performance ratings across mobile and desktop audits."
       ],
-      technologies: ["Next.js", "React Native", "TypeScript", "Tailwind CSS", "RESTful APIs", "MongoDB"]
+      stack: ["Next.js", "React Native", "TypeScript", "Tailwind CSS", "MongoDB", "REST APIs"]
     }
   ] as ExperienceItem[],
-
-  skillCategories: [
-    {
-      title: "Web & Frontend Engineering",
-      iconName: "Layout",
-      skills: [
-        { name: "Next.js (App Router)", level: 95, highlight: true },
-        { name: "React.js / Redux", level: 95, highlight: true },
-        { name: "TypeScript", level: 92, highlight: true },
-        { name: "Tailwind CSS / Glassmorphism", level: 95 },
-        { name: "HTML5 / Modern CSS3 / SASS", level: 98 },
-        { name: "Framer Motion / Web Animations", level: 88 }
-      ]
-    },
-    {
-      title: "Mobile App Development",
-      iconName: "Smartphone",
-      skills: [
-        { name: "React Native (iOS & Android)", level: 92, highlight: true },
-        { name: "Cross-Platform App Architecture", level: 90 },
-        { name: "Native Module Integration", level: 85 },
-        { name: "Mobile UI/UX Optimization", level: 92 },
-        { name: "App Store & Play Store Deployment", level: 90 }
-      ]
-    },
-    {
-      title: "Backend & Cloud Architecture",
-      iconName: "Server",
-      skills: [
-        { name: "Node.js / Express.js", level: 92, highlight: true },
-        { name: "RESTful & GraphQL APIs", level: 94 },
-        { name: "PostgreSQL / MongoDB / MySQL", level: 88 },
-        { name: "Python / FastApi / Flask", level: 85 },
-        { name: "Vercel / AWS / Docker", level: 86 }
-      ]
-    },
-    {
-      title: "Cybersecurity & Hardening",
-      iconName: "ShieldCheck",
-      skills: [
-        { name: "Web App Penetration Testing (OWASP)", level: 92, highlight: true },
-        { name: "Network & Server Security Hardening", level: 90, highlight: true },
-        { name: "Data Encryption & SSL/TLS", level: 94 },
-        { name: "Vulnerability Assessments & Auditing", level: 88 },
-        { name: "PCI-DSS / FinTech Compliance", level: 86 }
-      ]
-    }
-  ],
 
   certifications: [
     {
       title: "Certified Cybersecurity Specialist",
-      issuer: "Cybersecurity Professional Accreditation",
+      issuer: "Professional Security Accreditation",
       date: "Certified",
-      icon: "ShieldAlert"
+      code: "SEC-CERT-01"
     },
     {
-      title: "Web & Application Security Specialist",
+      title: "Web & Application Defense Specialist",
       issuer: "Smartweb Security Academy",
       date: "Certified",
-      icon: "Lock"
+      code: "SEC-AUDIT-02"
     },
     {
-      title: "Advanced Full-Stack Engineering",
-      issuer: "Full-Stack Development Certification",
+      title: "Advanced Full-Stack Architect",
+      issuer: "Software Engineering Certification",
       date: "Certified",
-      icon: "Code2"
+      code: "ARCH-DEV-03"
     }
   ] as Certification[]
 };
