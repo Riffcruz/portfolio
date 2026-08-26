@@ -1,90 +1,57 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Briefcase, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
+import { Briefcase, Calendar, MapPin } from 'lucide-react';
 import { PORTFOLIO_DATA } from '@/data/portfolioData';
 
 export const Experience: React.FC = () => {
   const { experiences } = PORTFOLIO_DATA;
 
   return (
-    <section id="experience" className="py-24 relative ambient-spotlight border-t border-slate-800/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-3">
-            <Briefcase className="w-3.5 h-3.5" />
-            <span>CAREER ROADMAP & LEADERSHIP</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-            Work Experience & <span className="text-emerald-400">Technical Leadership</span>
+        <div className="mb-10">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            Work Experience
           </h2>
-          <p className="mt-3 text-slate-300 text-sm sm:text-base font-light">
-            6+ years of driving growth, leading cross-functional tech teams, and engineering mission-critical software.
+          <p className="text-slate-400 text-sm mt-1">
+            Career background & engineering leadership.
           </p>
         </div>
 
-        {/* Timeline Container */}
-        <div className="max-w-4xl mx-auto relative space-y-8">
-          {/* Vertical Connecting Line */}
-          <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-emerald-500 via-cyan-500 to-slate-800 -translate-x-1/2 hidden md:block" />
-
+        <div className="space-y-6">
           {experiences.map((exp, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
-            >
-              {/* Left Column */}
-              <div className={`space-y-3 ${idx % 2 === 0 ? 'md:text-right' : 'md:order-2 md:text-left'}`}>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-slate-800 text-emerald-400 text-xs font-mono">
-                  <Calendar className="w-3.5 h-3.5" />
-                  <span>{exp.period}</span>
+            <div key={idx} className="clean-card p-6 rounded-xl space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <div>
+                  <h3 className="text-lg font-bold text-white">{exp.role}</h3>
+                  <span className="text-sm font-semibold text-emerald-400">{exp.company}</span>
                 </div>
-                <h3 className="text-2xl font-bold text-white font-mono">{exp.role}</h3>
-                <h4 className="text-base font-semibold text-emerald-400 flex items-center gap-2 justify-start md:justify-end">
-                  <span>{exp.company}</span>
-                </h4>
-                <div className="flex items-center gap-1 text-xs text-slate-400 font-mono justify-start md:justify-end">
-                  <MapPin className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>{exp.location}</span>
+                <div className="flex items-center gap-3 text-xs font-mono text-slate-400">
+                  <span className="flex items-center gap-1">
+                    <Calendar className="w-3.5 h-3.5 text-emerald-400" />
+                    {exp.period}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                    {exp.location}
+                  </span>
                 </div>
               </div>
 
-              {/* Center Node */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center justify-center">
-                <div className="w-8 h-8 rounded-full bg-slate-950 border-2 border-emerald-400 flex items-center justify-center shadow-lg shadow-emerald-500/30">
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-                </div>
-              </div>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                {exp.description}
+              </p>
 
-              {/* Right Box */}
-              <div className={`bespoke-card p-6 rounded-2xl border border-slate-800 space-y-4 ${idx % 2 === 0 ? 'md:order-2' : ''}`}>
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-light">{exp.summary}</p>
-                
-                <div className="space-y-2">
-                  {exp.bullets.map((bullet, bIdx) => (
-                    <div key={bIdx} className="flex items-start gap-2 text-xs text-slate-300 font-light">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                      <span>{bullet}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-800/80">
-                  {exp.stack.map((tech, tIdx) => (
-                    <span key={tIdx} className="px-2 py-0.5 rounded bg-slate-900 text-[10px] font-mono text-cyan-300 border border-slate-800">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+              <div className="flex flex-wrap gap-1.5 pt-2">
+                {exp.stack.map((item, sIdx) => (
+                  <span key={sIdx} className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[11px] font-mono text-slate-400">
+                    {item}
+                  </span>
+                ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

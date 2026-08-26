@@ -1,202 +1,93 @@
 'use client';
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Layers, ArrowUpRight, X } from 'lucide-react';
-import { PORTFOLIO_DATA, Project } from '@/data/portfolioData';
+import React from 'react';
+import { ExternalLink, ArrowUpRight, Shield, Globe, Building } from 'lucide-react';
+import { PORTFOLIO_DATA } from '@/data/portfolioData';
 
 export const Projects: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState<'all' | 'web' | 'mobile' | 'fintech' | 'security'>('all');
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  const filters = [
-    { label: 'All Projects', value: 'all' },
-    { label: 'FinTech & Core', value: 'fintech' },
-    { label: 'Web Platforms', value: 'web' },
-    { label: 'Cybersecurity', value: 'security' },
-  ];
-
-  const filteredProjects = PORTFOLIO_DATA.projects.filter((project) => {
-    if (activeFilter === 'all') return true;
-    return project.category === activeFilter;
-  });
+  const { projects } = PORTFOLIO_DATA;
 
   return (
-    <section id="projects" className="py-24 relative bg-[#050811] border-t border-slate-800/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-3 uppercase tracking-wider">
-            <Layers className="w-3.5 h-3.5" />
-            <span>PRODUCTION PORTFOLIO & LIVE DEPLOYS</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-            Featured <span className="text-emerald-400">Applications</span> & <span className="text-emerald-400">Web Platforms</span>
+        <div className="mb-10">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            Featured Projects & Work
           </h2>
-          <p className="mt-3 text-slate-300 text-sm sm:text-base font-light">
-            Explore live deployed applications, e-commerce systems, and enterprise cybersecurity architectures.
+          <p className="text-slate-400 text-sm mt-1">
+            CTO leadership at TallyPadi & web platforms developed for clients.
           </p>
         </div>
 
-        {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-          {filters.map((filter) => (
-            <button
-              key={filter.value}
-              onClick={() => setActiveFilter(filter.value as any)}
-              className={`px-5 py-2.5 rounded-xl text-xs font-mono font-semibold transition-all duration-200 ${
-                activeFilter === filter.value
-                  ? 'bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20 font-bold'
-                  : 'bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-850 border border-slate-800'
-              }`}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="clean-card rounded-xl p-6 flex flex-col justify-between space-y-4"
             >
-              {filter.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-                className="pro-card rounded-3xl overflow-hidden border border-slate-800 flex flex-col justify-between group"
-              >
-                {/* Header Banner */}
-                <div className="h-44 w-full bg-slate-900/90 p-6 flex flex-col justify-between relative overflow-hidden border-b border-slate-800">
-                  
-                  {/* Category Pill */}
-                  <div className="relative z-10 flex items-center justify-between font-mono">
-                    <span className="px-3 py-1 rounded-full bg-slate-950/90 border border-emerald-500/40 text-[11px] text-emerald-400">
-                      {project.tag}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className={`px-2.5 py-0.5 rounded text-xs font-semibold ${
+                    project.type === 'CTO Role'
+                      ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/40'
+                      : 'bg-slate-900 text-slate-300 border border-slate-800'
+                  }`}>
+                    {project.type}
+                  </span>
+                  {project.metrics && (
+                    <span className="text-xs text-slate-400 font-mono">
+                      {project.metrics}
                     </span>
-                    {project.metrics && (
-                      <span className="px-3 py-1 rounded-full bg-slate-950/90 border border-slate-700 text-[11px] text-slate-300">
-                        {project.metrics}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Role Title */}
-                  <div className="relative z-10 mt-auto">
-                    <span className="text-xs font-mono text-emerald-400 block mb-1">{project.role}</span>
-                    <h3 className="text-2xl font-extrabold text-white tracking-tight group-hover:text-emerald-400 transition-colors font-mono">
-                      {project.title}
-                    </h3>
-                  </div>
+                  )}
                 </div>
 
-                {/* Body Content */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <p className="text-xs sm:text-sm text-slate-300 line-clamp-3 leading-relaxed font-light">
-                    {project.description}
-                  </p>
-
-                  {/* Tech Badges */}
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {project.technologies.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-mono text-slate-400"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Actions Footer */}
-                  <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between font-mono">
-                    <button
-                      onClick={() => setSelectedProject(project)}
-                      className="text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1"
-                    >
-                      <span>Technical Details</span>
-                    </button>
-
-                    {project.url !== '#' ? (
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs transition-colors"
-                      >
-                        <span>Launch Site</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </a>
-                    ) : (
-                      <span className="text-xs text-slate-500 italic">Enterprise Suite</span>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
-        {/* Detailed Project Modal */}
-        {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="pro-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-slate-700 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto"
-            >
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 p-2 rounded-xl bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <div>
-                <span className="text-xs font-mono text-emerald-400 uppercase tracking-widest block mb-1">
-                  {selectedProject.tag} • {selectedProject.role}
+                <h3 className="text-xl font-bold text-white">
+                  {project.title}
+                </h3>
+                <span className="text-xs text-emerald-400 block font-medium">
+                  {project.role}
                 </span>
-                <h3 className="text-3xl font-black text-white font-mono">{selectedProject.title}</h3>
+                
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pt-1">
+                  {project.description}
+                </p>
               </div>
 
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-                {selectedProject.longDescription || selectedProject.description}
-              </p>
-
-              <div>
-                <h4 className="text-xs font-mono uppercase text-slate-400 mb-2 tracking-wider">Production Stack</h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedProject.technologies.map((tech, idx) => (
+              <div className="space-y-4 pt-2">
+                {/* Tech Pills */}
+                <div className="flex flex-wrap gap-1.5">
+                  {project.technologies.map((tech, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 rounded-lg bg-slate-900 border border-slate-700 text-xs font-mono text-emerald-300"
+                      className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[11px] text-slate-400 font-mono"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
-              </div>
 
-              {selectedProject.url !== '#' && (
-                <div className="pt-4 border-t border-slate-800 flex items-center justify-between font-mono">
-                  <span className="text-xs text-slate-400">Live URL: {selectedProject.url}</span>
-                  <a
-                    href={selectedProject.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 text-slate-950 font-bold text-xs hover:bg-emerald-400"
-                  >
-                    <span>Launch Live Site</span>
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-              )}
-            </motion.div>
-          </div>
-        )}
+                {/* Direct Link */}
+                {project.url !== '#' && (
+                  <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs">
+                    <span className="text-slate-400 font-mono truncate max-w-[200px]">
+                      {project.url}
+                    </span>
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold"
+                    >
+                      <span>Visit Website</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
 
       </div>
     </section>
