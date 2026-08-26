@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Phone, MessageSquare, ExternalLink, ArrowRight, MapPin, Award } from 'lucide-react';
+import { ShieldCheck, Phone, MessageSquare, ExternalLink, ArrowRight, MapPin, Award, Terminal, Code2 } from 'lucide-react';
 import { PORTFOLIO_DATA } from '@/data/portfolioData';
 
 export const Hero: React.FC = () => {
@@ -34,7 +34,7 @@ export const Hero: React.FC = () => {
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-none mb-4">
               <span className="block text-2xl sm:text-3xl font-mono text-cyan-400 font-medium mb-2">Akor Anthony Makuochukwu</span>
-              Architecting <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 glow-text-emerald">Reactive Apps</span>, Web Platforms & Secure Systems.
+              Architecting <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 glow-text-emerald">Reactive Apps</span>, Web Platforms & Security.
             </h1>
 
             {/* Sub-headline */}
@@ -81,89 +81,63 @@ export const Hero: React.FC = () => {
 
           </motion.div>
 
-          {/* Right Visual Interactive Card */}
+          {/* Right Visual Photo & Profile Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-5 relative"
           >
-            {/* Glass Box */}
-            <div className="glass-card rounded-2xl p-6 sm:p-8 relative z-10 border border-slate-800/80 shadow-2xl">
-              <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-800">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+            <div className="relative mx-auto max-w-md">
+              
+              {/* Outer Decorative Glow Ring */}
+              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-emerald-500 to-cyan-500 opacity-30 blur-xl group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+
+              {/* Profile Image Box */}
+              <div className="glass-card rounded-3xl overflow-hidden p-2.5 border border-slate-700/80 shadow-2xl relative">
+                <div className="relative h-[440px] sm:h-[480px] w-full rounded-2xl overflow-hidden group">
+                  <img
+                    src="/profile.jpg"
+                    alt="Akor Anthony Makuochukwu (Snowtech)"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                  
+                  {/* Subtle Gradient Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+
+                  {/* Top Floating Badge */}
+                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                    <span className="px-3 py-1 rounded-full bg-slate-950/80 border border-emerald-500/40 text-emerald-400 text-xs font-mono backdrop-blur-md">
+                      @Snowtech
+                    </span>
+                    <span className="px-3 py-1 rounded-full bg-slate-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-mono backdrop-blur-md flex items-center gap-1.5">
+                      <Code2 className="w-3.5 h-3.5" /> CTO @ TallyPadi
+                    </span>
+                  </div>
+
+                  {/* Bottom Text Overlay */}
+                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-950/90 border border-slate-800 backdrop-blur-md space-y-2">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-base font-bold text-white font-mono">Akor Anthony Makuochukwu</h3>
+                      <span className="text-emerald-400 text-xs font-mono font-bold">6+ Yrs Exp</span>
+                    </div>
+                    <p className="text-xs text-slate-300">
+                      Senior Full-Stack & App Developer • Cybersecurity Specialist • Lagos, Nigeria
+                    </p>
+                    <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                      <span>Phone: 09045382250</span>
+                      <a
+                        href="https://tallypadi.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-emerald-400 hover:underline flex items-center gap-1"
+                      >
+                        tallypadi.com <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+
                 </div>
-                <span className="text-xs font-mono text-slate-400">snowtech_profile.config.ts</span>
-              </div>
-
-              {/* Code Snippet Display */}
-              <div className="space-y-4 font-mono text-xs sm:text-sm">
-                <div>
-                  <span className="text-purple-400">const</span> <span className="text-cyan-300">engineer</span> = &#123;
-                </div>
-                <div className="pl-4 space-y-1">
-                  <div><span className="text-emerald-400">fullName:</span> <span className="text-slate-300">"Akor Anthony Makuochukwu"</span>,</div>
-                  <div><span className="text-emerald-400">brandAlias:</span> <span className="text-amber-300">"Snowtech"</span>,</div>
-                  <div><span className="text-emerald-400">role:</span> <span className="text-slate-300">"CTO @ TallyPadi & Full-Stack Engineer"</span>,</div>
-                  <div><span className="text-emerald-400">experience:</span> <span className="text-amber-300">"6+ Years"</span>,</div>
-                  <div><span className="text-emerald-400">location:</span> <span className="text-slate-300">"Sangotedo, Lagos Island, Nigeria"</span>,</div>
-                  <div><span className="text-emerald-400">specialization:</span> [<span className="text-cyan-300">"Mobile Apps"</span>, <span className="text-cyan-300">"Web Dev"</span>, <span className="text-cyan-300">"Cybersecurity"</span>],</div>
-                  <div><span className="text-emerald-400">contactPhone:</span> <span className="text-emerald-300">"09045382250"</span>,</div>
-                </div>
-                <div>&#125;;</div>
-              </div>
-
-              {/* Direct Live Projects Quick Access */}
-              <div className="mt-6 pt-6 border-t border-slate-800/80 space-y-2.5">
-                <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block mb-2">Live Deployed Works</span>
-                
-                <a
-                  href="https://tallypadi.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-xs text-slate-200 border border-slate-800 hover:border-emerald-500/50 transition-all"
-                >
-                  <span className="font-semibold text-emerald-400 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    TallyPadi (CTO)
-                  </span>
-                  <span className="text-slate-400 flex items-center gap-1 font-mono text-[11px]">
-                    tallypadi.com <ExternalLink className="w-3 h-3" />
-                  </span>
-                </a>
-
-                <a
-                  href="https://www.rmg-emporium.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-xs text-slate-200 border border-slate-800 hover:border-cyan-500/50 transition-all"
-                >
-                  <span className="font-semibold text-cyan-400 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                    RMG Emporium
-                  </span>
-                  <span className="text-slate-400 flex items-center gap-1 font-mono text-[11px]">
-                    rmg-emporium.com <ExternalLink className="w-3 h-3" />
-                  </span>
-                </a>
-
-                <a
-                  href="https://wilson-elite.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-xs text-slate-200 border border-slate-800 hover:border-purple-500/50 transition-all"
-                >
-                  <span className="font-semibold text-purple-400 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-                    Wilson Elite
-                  </span>
-                  <span className="text-slate-400 flex items-center gap-1 font-mono text-[11px]">
-                    wilson-elite.com <ExternalLink className="w-3 h-3" />
-                  </span>
-                </a>
               </div>
             </div>
           </motion.div>
