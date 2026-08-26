@@ -10,7 +10,6 @@ export interface Project {
   technologies: string[];
   metrics: string;
   featured: boolean;
-  accentGradient: string;
   tag: string;
 }
 
@@ -42,19 +41,19 @@ export const PORTFOLIO_DATA = {
   personalInfo: {
     fullName: "Akor Anthony Makuochukwu",
     alias: "Snowtech",
-    headline: "Senior Full-Stack & App Developer | CTO | Cybersecurity Specialist",
+    headline: "Chief Technology Officer & Senior Full-Stack Architect",
     experienceYears: "6+",
     phone: "09045382250",
     phoneFormatted: "+234 904 538 2250",
     whatsappUrl: "https://wa.me/2349045382250?text=Hello%20Anthony,%20I'm%20reaching%20out%20from%20your%20portfolio%20website.",
     email: "anthony@snowtech.dev",
     location: "Sangotedo, Lagos Island, Lagos, Nigeria",
-    bioShort: "CTO at TallyPadi & former Smartweb Security engineer. 6+ years building reactive mobile apps, enterprise web portals, and hardened cyber architectures.",
+    bioShort: "Chief Technology Officer at TallyPadi & former Cybersecurity Engineer at Smartweb Security. 6+ years of experience engineering enterprise web platforms, cross-platform mobile apps, and hardened cloud infrastructure.",
     stats: [
       { number: "06+", label: "Years Engineering Experience" },
-      { number: "25+", label: "Deploys & Live Products" },
-      { number: "10K+", label: "Active Businesses Served" },
-      { number: "99.9%", label: "Uptime & Security Integrity" }
+      { number: "25+", label: "Production Deployments" },
+      { number: "10K+", label: "Businesses Served" },
+      { number: "99.9%", label: "Uptime & System Integrity" }
     ]
   },
 
@@ -71,43 +70,40 @@ export const PORTFOLIO_DATA = {
       technologies: ["Next.js App Router", "React Native", "Node.js", "PostgreSQL", "Tailwind CSS", "PCI-DSS Security"],
       metrics: "10,000+ Active Businesses",
       featured: true,
-      accentGradient: "from-emerald-500/20 via-slate-900 to-cyan-500/10",
       tag: "CTO Spotlight"
     },
     {
       id: "rmg-emporium",
       title: "RMG Emporium",
-      subtitle: "Next-Gen E-Commerce & Retail Platform",
+      subtitle: "Enterprise E-Commerce Platform",
       category: "web",
-      description: "Built a high-converting, sub-second luxury web platform engineered for smooth catalog browsing, real-time checkout synchronization, and payment gateway security.",
-      longDescription: "Implemented server-side rendering with Next.js, custom checkout workflows, automated inventory webhooks, and zero-latency page transitions.",
+      description: "Built a high-converting luxury web store engineered for catalog browsing, real-time checkout synchronization, and payment gateway security.",
+      longDescription: "Implemented server-side rendering with Next.js, custom checkout workflows, automated inventory webhooks, and sub-second page load speeds.",
       url: "https://www.rmg-emporium.com/",
       role: "Lead Full-Stack Developer",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Paystack", "Stripe API", "Vercel Edge"],
       metrics: "Sub-second Page Load",
       featured: true,
-      accentGradient: "from-cyan-500/20 via-slate-900 to-purple-500/10",
       tag: "Live E-Commerce"
     },
     {
       id: "wilson-elite",
       title: "Wilson Elite",
-      subtitle: "Enterprise Corporate Identity & Portal",
+      subtitle: "Corporate Enterprise Platform",
       category: "web",
-      description: "Designed and built an enterprise brand platform for elite business consulting, digital asset management, and client engagement.",
-      longDescription: "Custom reactive web layout with glassmorphism UI, interactive service request modules, and optimized web performance architecture.",
+      description: "Designed and built an enterprise corporate platform for digital services, enterprise consulting, and client engagement.",
+      longDescription: "Structured corporate web portal with optimized UI components, interactive client request modules, and web performance architecture.",
       url: "https://wilson-elite.com/",
       role: "Founder & Lead Developer",
       technologies: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS", "Vercel"],
-      metrics: "99+ Lighthouse Performance",
+      metrics: "Enterprise Portal",
       featured: true,
-      accentGradient: "from-indigo-500/20 via-slate-900 to-emerald-500/10",
       tag: "Corporate Platform"
     },
     {
       id: "smartweb-security-suite",
       title: "Smartweb Security & Audit Suite",
-      subtitle: "Cyber Threat Detection & Hardening Portal",
+      subtitle: "Threat Detection & Server Hardening Portal",
       category: "security",
       description: "Developed web application security auditing tools, penetration test reporting dashboards, and threat monitoring suites during technical tenure at Smartweb Security.",
       longDescription: "Engineered automated scanners for OWASP Top 10 vulnerabilities, server SSL/TLS compliance checkers, and secure client communication channels.",
@@ -116,7 +112,6 @@ export const PORTFOLIO_DATA = {
       technologies: ["Python", "Node.js", "OWASP Audits", "Linux Hardening", "Docker", "Security Headers"],
       metrics: "Zero Vulnerability Compliance",
       featured: true,
-      accentGradient: "from-emerald-600/20 via-slate-900 to-slate-950",
       tag: "Security Suite"
     }
   ] as Project[],

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Layers, ArrowUpRight, Shield, Smartphone, Globe, CheckCircle2, X } from 'lucide-react';
+import { ExternalLink, Layers, ArrowUpRight, X } from 'lucide-react';
 import { PORTFOLIO_DATA, Project } from '@/data/portfolioData';
 
 export const Projects: React.FC = () => {
@@ -22,17 +22,17 @@ export const Projects: React.FC = () => {
   });
 
   return (
-    <section id="projects" className="py-24 relative bg-slate-950/80 border-t border-slate-800/80">
+    <section id="projects" className="py-24 relative bg-[#050811] border-t border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 text-xs font-mono mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-3 uppercase tracking-wider">
             <Layers className="w-3.5 h-3.5" />
-            <span>PORTFOLIO & LIVE DEPLOYS</span>
+            <span>PRODUCTION PORTFOLIO & LIVE DEPLOYS</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-            Featured <span className="text-emerald-400">Applications</span> & <span className="text-cyan-400">Web Platforms</span>
+            Featured <span className="text-emerald-400">Applications</span> & <span className="text-emerald-400">Web Platforms</span>
           </h2>
           <p className="mt-3 text-slate-300 text-sm sm:text-base font-light">
             Explore live deployed applications, e-commerce systems, and enterprise cybersecurity architectures.
@@ -47,8 +47,8 @@ export const Projects: React.FC = () => {
               onClick={() => setActiveFilter(filter.value as any)}
               className={`px-5 py-2.5 rounded-xl text-xs font-mono font-semibold transition-all duration-200 ${
                 activeFilter === filter.value
-                  ? 'bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/25 scale-105 font-bold'
-                  : 'bg-slate-900/80 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
+                  ? 'bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20 font-bold'
+                  : 'bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-850 border border-slate-800'
               }`}
             >
               {filter.label}
@@ -67,19 +67,18 @@ export const Projects: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
-                className="bespoke-card rounded-3xl overflow-hidden border border-slate-800 flex flex-col justify-between group"
+                className="pro-card rounded-3xl overflow-hidden border border-slate-800 flex flex-col justify-between group"
               >
                 {/* Header Banner */}
-                <div className={`h-48 w-full bg-gradient-to-br ${project.accentGradient} p-6 flex flex-col justify-between relative overflow-hidden border-b border-slate-800/80`}>
-                  <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[2px]" />
+                <div className="h-44 w-full bg-slate-900/90 p-6 flex flex-col justify-between relative overflow-hidden border-b border-slate-800">
                   
                   {/* Category Pill */}
-                  <div className="relative z-10 flex items-center justify-between">
-                    <span className="px-3 py-1 rounded-full bg-slate-950/90 border border-emerald-500/40 text-[11px] font-mono text-emerald-400">
+                  <div className="relative z-10 flex items-center justify-between font-mono">
+                    <span className="px-3 py-1 rounded-full bg-slate-950/90 border border-emerald-500/40 text-[11px] text-emerald-400">
                       {project.tag}
                     </span>
                     {project.metrics && (
-                      <span className="px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-500/40 text-[11px] font-mono text-emerald-300">
+                      <span className="px-3 py-1 rounded-full bg-slate-950/90 border border-slate-700 text-[11px] text-slate-300">
                         {project.metrics}
                       </span>
                     )}
@@ -87,8 +86,8 @@ export const Projects: React.FC = () => {
 
                   {/* Role Title */}
                   <div className="relative z-10 mt-auto">
-                    <span className="text-xs font-mono text-cyan-300 block mb-1">{project.role}</span>
-                    <h3 className="text-2xl font-extrabold text-white tracking-tight group-hover:text-emerald-300 transition-colors font-mono">
+                    <span className="text-xs font-mono text-emerald-400 block mb-1">{project.role}</span>
+                    <h3 className="text-2xl font-extrabold text-white tracking-tight group-hover:text-emerald-400 transition-colors font-mono">
                       {project.title}
                     </h3>
                   </div>
@@ -118,7 +117,7 @@ export const Projects: React.FC = () => {
                       onClick={() => setSelectedProject(project)}
                       className="text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1"
                     >
-                      <span>View Technical Overview</span>
+                      <span>Technical Details</span>
                     </button>
 
                     {project.url !== '#' ? (
@@ -132,7 +131,7 @@ export const Projects: React.FC = () => {
                         <ArrowUpRight className="w-3.5 h-3.5" />
                       </a>
                     ) : (
-                      <span className="text-xs text-slate-500 italic">Enterprise Security</span>
+                      <span className="text-xs text-slate-500 italic">Enterprise Suite</span>
                     )}
                   </div>
                 </div>
@@ -147,7 +146,7 @@ export const Projects: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bespoke-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-slate-700 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto"
+              className="pro-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-slate-700 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto"
             >
               <button
                 onClick={() => setSelectedProject(null)}
@@ -188,7 +187,7 @@ export const Projects: React.FC = () => {
                     href={selectedProject.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-bold text-xs"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 text-slate-950 font-bold text-xs hover:bg-emerald-400"
                   >
                     <span>Launch Live Site</span>
                     <ExternalLink className="w-4 h-4" />

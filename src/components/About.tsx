@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Cpu, Smartphone, Globe, User, Building, Phone, CheckCircle2, Lock, Terminal } from 'lucide-react';
+import { Shield, Cpu, Smartphone, Globe, User, Building, Phone, CheckCircle2 } from 'lucide-react';
 import { PORTFOLIO_DATA } from '@/data/portfolioData';
 
 export const About: React.FC = () => {
@@ -11,8 +11,8 @@ export const About: React.FC = () => {
   const pillars = [
     {
       icon: Cpu,
-      title: "CTO & Engineering Strategy",
-      description: "Directing tech vision, cloud microservices, database scaling, and product execution at TallyPadi."
+      title: "CTO & Technical Strategy",
+      description: "Directing technology architecture, cloud microservices, database scaling, and product execution at TallyPadi."
     },
     {
       icon: Shield,
@@ -32,17 +32,17 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-24 relative bg-slate-950/70 border-t border-b border-slate-800/80">
+    <section id="about" className="py-24 relative bg-[#050811] border-t border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-3 uppercase tracking-wider">
             <User className="w-3.5 h-3.5" />
-            <span>EXECUTIVE SUMMARY & IDENTITY</span>
+            <span>EXECUTIVE BACKGROUND & IDENTITY</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-            6 Years of Engineering <span className="text-emerald-400">Scalable Systems</span> & <span className="text-cyan-400">Cyber Hardening</span>
+            6 Years of Engineering <span className="text-emerald-400">Scalable Systems</span> & <span className="text-emerald-400">Cyber Hardening</span>
           </h2>
         </div>
 
@@ -57,7 +57,7 @@ export const About: React.FC = () => {
             className="lg:col-span-6 space-y-6 text-slate-300"
           >
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug font-mono">
-              Akor Anthony Makuochukwu <span className="text-emerald-400">(Snowtech)</span>
+              Akor Anthony Makuochukwu <span className="text-emerald-400 font-normal">(Snowtech)</span>
             </h3>
 
             <p className="leading-relaxed text-sm sm:text-base font-light">
@@ -65,11 +65,11 @@ export const About: React.FC = () => {
             </p>
 
             <p className="leading-relaxed text-sm sm:text-base font-light">
-              As the <strong className="text-emerald-400 font-semibold">Chief Technology Officer (CTO) of TallyPadi</strong>, I lead technological innovation and core application architecture. My engineering foundation is backed by extensive work with enterprise clients like <strong className="text-cyan-400 font-semibold">Smartweb Security</strong>, conducting vulnerability assessments and building hardened cloud systems.
+              As the <strong className="text-emerald-400 font-semibold">Chief Technology Officer (CTO) of TallyPadi</strong>, I lead technological innovation and core application architecture. My engineering foundation is backed by extensive work with enterprise clients like <strong className="text-emerald-400 font-semibold">Smartweb Security</strong>, conducting vulnerability assessments and building hardened cloud systems.
             </p>
 
-            {/* Key Credentials Strip */}
-            <div className="bespoke-card rounded-2xl p-5 border border-slate-800 space-y-3 font-mono text-xs">
+            {/* Verified Credentials Strip */}
+            <div className="pro-card rounded-2xl p-5 border border-slate-800 space-y-3 font-mono text-xs">
               <div className="flex items-center gap-2 text-emerald-400 font-bold uppercase tracking-wider">
                 <Building className="w-4 h-4" />
                 <span>Verified Leadership Credentials</span>
@@ -80,7 +80,7 @@ export const About: React.FC = () => {
                   <span>CTO @ TallyPadi (tallypadi.com)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>Smartweb Security Engineer</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -88,7 +88,7 @@ export const About: React.FC = () => {
                   <span>Certified Cybersecurity Specialist</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>Phone: 09045382250</span>
                 </div>
               </div>
@@ -125,7 +125,7 @@ export const About: React.FC = () => {
               return (
                 <div
                   key={idx}
-                  className="bespoke-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between"
+                  className="pro-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between"
                 >
                   <div className="w-12 h-12 rounded-xl bg-slate-900 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4 shadow-md">
                     <Icon className="w-6 h-6" />
